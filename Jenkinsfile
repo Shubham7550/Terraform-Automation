@@ -5,9 +5,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Shubham7550/Terraform-Automation.git']])
-            
-
-
             }
         }
     
@@ -19,14 +16,14 @@ pipeline {
         
         stage ("plan") {
             steps {
-                sh ('terraform plan') 
+                sh ("terraform plan") 
             }
         }
 
-        stage (" Action") {
+        stage ("action") {
             steps {
                 echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} --auto-approve') 
+                sh ("terraform ${action} --auto-approve") 
            }
         }
     }
